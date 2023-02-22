@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!-- Lab 3, Part 2
+     Tegan Jetton
+     CIS 182 CE
+     2/20/23        -->
+<html>
+    <head>
+        <title>Lab 3: Gradebook</title>
+        <link rel="stylesheet" href="css/lab3style.css">
+    </head>
+    <body>
+        <h1>Gradebook</h1>
+        <script>
+
+            //declarations
+            let courses = [];
+            let grades = [];
+            let totalGrade = 0;
+            let avgGrade = 0;
+            let letterGrade;
+
+            //prompt for name, number of grades
+            name = prompt("Enter student name");
+            amt = prompt("How many grades would you like to evaluate?");
+
+            //loop to add numbers into array
+            for(let i=0; i<amt; i++){
+                courses[i]=prompt("Enter Course name #" + (i+1));
+                grades[i]= prompt("Enter Grade #" + (i+1) + " (" +courses[i]+")");
+            }
+
+            //calculate total grade by iterating through grades array and adding
+            //totalGrade, then returning it
+            function CalcGradeTotal(grades, totalGrade){
+                for(j=0;j<amt;j++){
+                    totalGrade += parseFloat(grades[j]);
+                    document.writeln("<p>"+courses[j]+": "+grades[j]+"</p>");
+                }
+                return totalGrade;
+            }
+
+            //function to calculate the letter grade, simple if/else if, then return
+            function CalcLetterGrade(avgGrade){
+                if(avgGrade >= 90){
+                    letterGrade = "A";
+                }
+                else if(avgGrade< 90 && avgGrade >= 80){
+                    letterGrade = "B";
+                }
+                else if(avgGrade< 80 && avgGrade >= 70){
+                    letterGrade = "C";
+                }
+                else if(avgGrade< 70 && avgGrade >= 60){
+                    letterGrade = "D";
+                }
+                else{
+                    letterGrade = "F";
+                }
+                return letterGrade;
+            }
+
+            //call functions and calculate the average grade
+            totalGrade = CalcGradeTotal(grades, totalGrade);
+            avgGrade = totalGrade/grades.length;
+            letterGrade = CalcLetterGrade(avgGrade);
+
+            //write results to page
+            document.writeln("<section><p>Total Grade: " + totalGrade + "</p>");
+            document.writeln("<p>Average Grade: " + avgGrade + "</p>");
+            document.writeln("<p>Letter Grade: " + letterGrade + "</p></section>");
+        </script>
+    </body>
+</html>

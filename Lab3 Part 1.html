@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!-- Lab 3, Part 1
+     Tegan Jetton
+     CIS 182 CE
+     2/20/23        -->
+<html>
+    <head>
+        <title>Lab 3: Sequence Evaluation</title>
+        <link rel="stylesheet" href="css/lab3style.css">
+    </head>
+    <body>
+        <h1>Sequence Evaluation</h1>
+        <script>
+            //declarations
+            const sequence = [];
+            let x = true;
+            //prompt for amount
+            amt = prompt("Enter number of elements in sequence");
+            //loop to add numbers into array
+            for(i=0; i<amt; i++){
+                sequence.push(prompt("Enter sequence #" + (i+1)));
+            }
+            document.write("<p>"+sequence+"</p>");
+            //iterate through sequence to see if the absolute value == 2
+            for(j=0; j<(amt-1); j++){
+                //if true, continue to next number
+                if (Math.abs(sequence[j] - sequence[(j+1)]) == 2){
+                    continue;                    
+                }
+                //if false, break statement (no use in continuing to check)
+                else{
+                    x = false;
+                    break;
+                }
+            }
+            //write out whether sequence is true or false
+            document.writeln("<p>Sequence ==> "+ x + "</p>");
+        </script>
+    </body>
+</html>
